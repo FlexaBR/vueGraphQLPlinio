@@ -1,0 +1,4 @@
+mbackend/src/generated/
+mbackend/node_modules/
+
+.env*
