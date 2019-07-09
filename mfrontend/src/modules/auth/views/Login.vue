@@ -178,7 +178,7 @@ export default {
     async submit () {
       this.isLoading = true
       try {
-        this.isLogin  
+        this.isLogin
           ? await AuthService.login(this.user)
           : await AuthService.signup(this.user)
         this.$router.push(this.$route.query.redirect || '/dashboard')
