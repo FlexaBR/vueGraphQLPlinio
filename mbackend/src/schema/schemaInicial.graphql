@@ -1,25 +1,20 @@
-enum Regra {
-  USUARIO
-  CLIENTE
-  PREPOSTO
-  DIRETOR
-  ADMIN
+scalar Date
+
+type AuthPayload {
+  token: String!
+  user: User!
 }
 
-
 type User {
-  id: ID! @unique
+  id: ID!
   name: String!
-  email: String! @unique
-  password: String!
-  
-  role: Regra! @default(value: "USUARIO")
-  ativo: Boolean @default(value: "true")
-  createdAt: DateTime!
+  email: String!
+
+  role: String
 }
 
 type Account {
-  id: ID! @unique
+  id: ID!
   user: User
   description: String!
 }
@@ -30,24 +25,21 @@ enum Operation {
 }
 
 type Category {
-  id: ID! @unique
+  id: ID!
   user: User
   description: String!
   operation: Operation!
 }
 
 type Record {
-  id: ID! @unique
+  id: ID!
   user: User!
   account: Account!
   category: Category!
   amount: Float!
   type: Operation!
-  date: DateTime!
+  date: Date!
   description: String!
   tags: String
   note: String
-
-  createdAt: DateTime!
-  updatedAt: DateTime!
 }

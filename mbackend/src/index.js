@@ -8,7 +8,7 @@ const env = process.env
 const endpoint = `${env.PRISMA_ENDPOINT}/${env.PRISMA_SERVICE}/${env.PRISMA_STAGE}`
 
 const server = new GraphQLServer({
-  typeDefs: `${__dirname}/schema.graphql`,
+  typeDefs: `${__dirname}/schema/index.graphql`,
   resolvers,
   context: request => ({
     ...request,

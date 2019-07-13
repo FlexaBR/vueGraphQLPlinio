@@ -1,0 +1,185 @@
+type Cidade {
+  id: ID! @unique
+  nomeCidade: String!
+  estado: String!
+}
+
+type Cliente {
+  id: ID! @unique
+  user: User!
+  cidade: Cidade!
+  pedidos: [Pedido!]!
+  situacao: Int! @default(value:"1")
+  razaoSocial: String! @unique
+  fantasia: String
+  nomeAbrev: String
+  telefones: String
+  contato: String
+  cpf: String
+  cnpj: String
+  inscEst: String
+  tipoLogr: String
+  logradouro: String
+  numero: String
+  complemento: String
+  bairro: String
+  cep: String
+  observacao: String
+
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}
+
+type Fabrica {
+  id: ID! @unique
+  cidade: Cidade!
+  produtos: [Produto!]!
+  situacao: Int! @default(value:"1")
+  razaoSocial: String! @unique
+  fantasia: String
+  nomeAbrev: String
+  email: String
+  telefones: String
+  contato: String
+  cnpj: String
+  tipoLogr: String
+  logradouro: String
+  numero: String
+  complemento: String
+  bairro: String
+  cep: String
+  observacao: String
+
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}
+
+type Preposto {
+  id: ID! @unique
+  user: User!
+  cidade: Cidade!
+  pedidos: [Pedido!]!
+  situacao: Int! @default(value:"1")
+  nomePrep: String! @unique
+  telefones: String
+  cpf: String
+  cnpj: String
+  inscMun: String
+  tipoLogr: String
+  logradouro: String
+  numero: String
+  complemento: String
+  bairro: String
+  cep: String
+  observacao: String
+
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}
+
+type Pedido {
+  id: ID! @unique
+  cliente: Cliente!
+  fabrica: Fabrica!
+  preposto: Preposto!
+  faturas: [Fatura!]!
+  itensPedi: [ItemPedi!]!
+  situacao: Int! @default(value:"1")
+  dataOrca: DateTime!
+  dataPedi: DateTime
+  oc: String
+  pediFabrica: String
+  condicoes: String
+  parcelas: Int
+  previEntrega: DateTime
+  frete: String
+  total: Float
+  desconto: Float
+  valoComi: Float
+  porcComi: Float
+  observacao: String
+  obsImpressao: String
+  dataEmail: DateTime
+  lido: Boolean! @default(value: "false")
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}
+
+type FabrClie {
+  id: ID! @unique
+  cliente: Cliente!
+  fabrica: Fabrica!
+  preposto: Preposto!
+  comiClie: Float
+  tabela: String
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}
+
+type Fatura {
+  id: ID! @unique
+  pedido: Pedido!
+  cancelado: Boolean! @default(value: "false")
+  nf: String
+  dataFatu: DateTime
+  valFatu: Float
+  porcComi: Float
+  valComi: Float
+  dataVenc: DateTime
+  valRece: Float
+  dataRece: DateTime
+  observacao: String
+  porcPrep: Float
+  valPrep: Float
+  dataPrep: DateTime
+
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}
+
+type Produto {
+  id: ID! @unique
+  fabrica: Fabrica!
+  ativo: Boolean! @default(value: "true")
+  referencia: String
+  nomeProd: String!
+  tabela1: Float!
+  tabela2: Float
+  comiProd: Float
+  unidade: String
+  caixaPadr: String
+
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}
+
+type ItemPedi {
+  id: ID! @unique
+  pedido: Pedido!
+  produto: Produto!
+  detalhes: String
+  qtde: Int!
+  preco: Float!
+  subTota: Float
+  subComi: Float  
+  cancelado: Boolean! @default(value: "false")
+
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}

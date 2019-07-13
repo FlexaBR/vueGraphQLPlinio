@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const moment = require('moment')
-const { getUserId } = require('./../utils')
+const { getUserId } = require('../../utils')
 
 const JWT_SECRET = process.env.JWT_SECRET
 
@@ -47,7 +47,6 @@ function createRecord (_, args, ctx, info) {
   ) {
     amount = -amount
   }
-
 
   const userId = getUserId(ctx)
   return ctx.db.mutation.createRecord({

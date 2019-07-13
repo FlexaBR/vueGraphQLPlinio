@@ -1,5 +1,7 @@
 endpoint: ${env:PRISMA_ENDPOINT}/${env:PRISMA_SERVICE}/${env:PRISMA_STAGE}
-datamodel: datamodel.prisma
+datamodel:
+  - datamodel.prisma
+  - mymodel.prisma
 
 generate:
   - generator: javascript-client

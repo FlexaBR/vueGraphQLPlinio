@@ -1,5 +1,5 @@
 const moment = require('moment')
-const { getUserId } = require('./../utils')
+const { getUserId } = require('../../utils')
 
 function accounts (_, args, ctx, info) {
   const userId = getUserId(ctx)
@@ -32,7 +32,7 @@ function categories (_, { operation }, ctx, info) {
     }
   ]
 
-  AND = !operation ? AND : [ ...AND, { operation } ]
+  AND = !operation ? AND : [...AND, { operation }]
 
   return ctx.db.query.categories({
     where: { AND },
@@ -44,22 +44,22 @@ function records (_, { month, type, accountsIds, categoriesIds }, ctx, info) {
 
   const userId = getUserId(ctx)
 
-  let AND = [ { user: { id: userId } } ]
-  AND = !type ? AND : [ ...AND, { type } ]
+  let AND = [{ user: { id: userId } }]
+  AND = !type ? AND : [...AND, { type }]
 
   AND = !accountsIds || accountsIds.length === 0
-   ? AND
-   : [
-     ...AND,
-     { OR: accountsIds.map(id => ({ account: { id } })) }
-   ]
+    ? AND
+    : [
+      ...AND,
+      { OR: accountsIds.map(id => ({ account: { id } })) }
+    ]
 
   AND = !categoriesIds || categoriesIds.length === 0
-   ? AND
-   : [
-     ...AND,
-     { OR: categoriesIds.map(id => ({ category: { id } })) }
-   ]
+    ? AND
+    : [
+      ...AND,
+      { OR: categoriesIds.map(id => ({ category: { id } })) }
+    ]
 
   if (month) {
     const date = moment(month, 'MM-YYYY') // 06-2019
@@ -112,15 +112,9 @@ function totalBalance (_, { date }, ctx, info) {
     })
 }
 
-function user(_, args, ctx, info) {
-  const userId = getUserId(ctx)
-  return ctx.db.query.user({ where: { id: userId }}, info)
-}
-
 module.exports = {
   accounts,
   categories,
   records,
-  totalBalance,
-  user
+  totalBalance
 }

@@ -1,0 +1,23 @@
+
+type Mutation {
+  
+  deleteUser(id: ID!): User
+
+  createAccount(description: String!): Account!
+  createCategory(description: String!, operation: Operation!): Category!
+  createRecord(
+    accountId: ID!
+    categoryId: ID!
+    amount: Float!
+    type: Operation!
+    date: Date!
+    description: String!
+    tags: String
+    note: String
+  ): Record!
+  login(email: String!, password: String!): AuthPayload
+  signup(email: String!, password: String!, name: String!): AuthPayload  
+
+
+  createCidade(nomeCidade: String!, estado: String!): Cidade!
+}
