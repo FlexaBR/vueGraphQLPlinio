@@ -6,7 +6,7 @@ function user (_, args, ctx, info) {
 }
 
 function users (_, args, ctx, info) {
-  const userId = getUserId(ctx)
+  
   return ctx.db.query.users()
 }
 

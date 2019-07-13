@@ -10,7 +10,9 @@ type User {
   name: String!
   email: String!
 
-  role: String
+  role: String!
+  ativo: Boolean!
+  createdAt: Date!
 }
 
 type Account {

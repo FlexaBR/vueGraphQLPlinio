@@ -1,5 +1,7 @@
 #import User, AuthPayload, Account, Category, Record from 'schemaInicial.graphql'
+#import Cidade, Teste from 'Cidade.graphql'
+
 #import Query from 'Query.graphql'
 #import Mutation from 'Mutation.graphql'
 
-#import Cidade from 'Cidade.graphql'
+

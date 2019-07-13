@@ -3,3 +3,9 @@ type Cidade {
   nomeCidade: String!
   estado: String!
 }
+
+
+type Teste {
+  id: ID!
+  tst: String!
+}

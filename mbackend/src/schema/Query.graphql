@@ -20,4 +20,5 @@ type Query {
   
   users: [ User! ]!
   cidades: [ Cidade! ]!
+  testes: [ Teste! ]!
 }

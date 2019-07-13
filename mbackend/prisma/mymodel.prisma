@@ -4,6 +4,11 @@ type Cidade {
   estado: String!
 }
 
+type Teste {
+  id: ID! @unique
+  tst: String!
+}
+
 type Cliente {
   id: ID! @unique
   user: User!

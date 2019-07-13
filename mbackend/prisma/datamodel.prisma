@@ -6,7 +6,6 @@ enum Regra {
   ADMIN
 }
 
-
 type User {
   id: ID! @unique
   name: String!

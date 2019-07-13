@@ -20,4 +20,5 @@ type Mutation {
 
 
   createCidade(nomeCidade: String!, estado: String!): Cidade!
+  createTeste(tst: String!): Teste!
 }
