@@ -1,0 +1,23 @@
+
+type Fatura {
+  id: ID!
+  pedido: Pedido!
+  cancelado: Boolean!
+  nf: String
+  dataFatu: Date
+  valFatu: Float
+  porcComi: Float
+  valComi: Float
+  dataVenc: Date
+  valRece: Float
+  dataRece: Date
+  observacao: String
+  porcPrep: Float
+  valPrep: Float
+  dataPrep: Date
+
+  createdAt: Date!
+  createdPor: String
+  updatedAt: Date!
+  updatedPor: String
+}

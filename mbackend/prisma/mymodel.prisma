@@ -4,16 +4,11 @@ type Cidade {
   estado: String!
 }
 
-type Teste {
-  id: ID! @unique
-  tst: String!
-}
-
 type Cliente {
   id: ID! @unique
   user: User!
   cidade: Cidade!
-  pedidos: [Pedido!]!
+  pedidos: [Pedido!]
   situacao: Int! @default(value:"1")
   razaoSocial: String! @unique
   fantasia: String
@@ -37,10 +32,24 @@ type Cliente {
   updatedPor: String
 }
 
+type FabrClie {
+  id: ID! @unique
+  cliente: Cliente!
+  fabrica: Fabrica!
+  preposto: Preposto!
+  comiClie: Float
+  tabela: String
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}
+
 type Fabrica {
   id: ID! @unique
   cidade: Cidade!
   produtos: [Produto!]!
+  pedidos: [Pedido!]
   situacao: Int! @default(value:"1")
   razaoSocial: String! @unique
   fantasia: String
@@ -57,6 +66,76 @@ type Fabrica {
   cep: String
   observacao: String
 
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}
+
+type Fatura {
+  id: ID! @unique
+  pedido: Pedido!
+  cancelado: Boolean! @default(value: "false")
+  nf: String
+  dataFatu: DateTime
+  valFatu: Float
+  porcComi: Float
+  valComi: Float
+  dataVenc: DateTime
+  valRece: Float
+  dataRece: DateTime
+  observacao: String
+  porcPrep: Float
+  valPrep: Float
+  dataPrep: DateTime
+
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}
+
+type ItemPedi {
+  id: ID! @unique
+  pedido: Pedido!
+  produto: Produto!
+  detalhes: String
+  qtde: Int!
+  preco: Float!
+  subTota: Float
+  subComi: Float  
+  cancelado: Boolean! @default(value: "false")
+
+  createdAt: DateTime!
+  createdPor: String
+  updatedAt: DateTime!
+  updatedPor: String
+}
+
+type Pedido {
+  id: ID! @unique
+  cliente: Cliente!
+  fabrica: Fabrica!
+  preposto: Preposto!
+  faturas: [Fatura!]!
+  itemPedis: [ItemPedi!]!
+  situacao: Int! @default(value:"1")
+  dataOrca: DateTime!
+  dataPedi: DateTime
+  oc: String
+  pediFabrica: String
+  condicoes: String
+  parcelas: Int
+  previEntrega: DateTime
+  frete: String
+  total: Float
+  desconto: Float
+  valoComi: Float
+  porcComi: Float
+  observacao: String
+  obsImpressao: String
+  dataEmail: DateTime
+  lido: Boolean! @default(value: "false")
   createdAt: DateTime!
   createdPor: String
   updatedAt: DateTime!
@@ -88,75 +167,10 @@ type Preposto {
   updatedPor: String
 }
 
-type Pedido {
-  id: ID! @unique
-  cliente: Cliente!
-  fabrica: Fabrica!
-  preposto: Preposto!
-  faturas: [Fatura!]!
-  itensPedi: [ItemPedi!]!
-  situacao: Int! @default(value:"1")
-  dataOrca: DateTime!
-  dataPedi: DateTime
-  oc: String
-  pediFabrica: String
-  condicoes: String
-  parcelas: Int
-  previEntrega: DateTime
-  frete: String
-  total: Float
-  desconto: Float
-  valoComi: Float
-  porcComi: Float
-  observacao: String
-  obsImpressao: String
-  dataEmail: DateTime
-  lido: Boolean! @default(value: "false")
-  createdAt: DateTime!
-  createdPor: String
-  updatedAt: DateTime!
-  updatedPor: String
-}
-
-type FabrClie {
-  id: ID! @unique
-  cliente: Cliente!
-  fabrica: Fabrica!
-  preposto: Preposto!
-  comiClie: Float
-  tabela: String
-  createdAt: DateTime!
-  createdPor: String
-  updatedAt: DateTime!
-  updatedPor: String
-}
-
-type Fatura {
-  id: ID! @unique
-  pedido: Pedido!
-  cancelado: Boolean! @default(value: "false")
-  nf: String
-  dataFatu: DateTime
-  valFatu: Float
-  porcComi: Float
-  valComi: Float
-  dataVenc: DateTime
-  valRece: Float
-  dataRece: DateTime
-  observacao: String
-  porcPrep: Float
-  valPrep: Float
-  dataPrep: DateTime
-
-  createdAt: DateTime!
-  createdPor: String
-  updatedAt: DateTime!
-  updatedPor: String
-}
-
 type Produto {
   id: ID! @unique
   fabrica: Fabrica!
+  itemPedis: [ItemPedi!]
   ativo: Boolean! @default(value: "true")
   referencia: String
   nomeProd: String!
@@ -165,23 +179,6 @@ type Produto {
   comiProd: Float
   unidade: String
   caixaPadr: String
-
-  createdAt: DateTime!
-  createdPor: String
-  updatedAt: DateTime!
-  updatedPor: String
-}
-
-type ItemPedi {
-  id: ID! @unique
-  pedido: Pedido!
-  produto: Produto!
-  detalhes: String
-  qtde: Int!
-  preco: Float!
-  subTota: Float
-  subComi: Float  
-  cancelado: Boolean! @default(value: "false")
 
   createdAt: DateTime!
   createdPor: String

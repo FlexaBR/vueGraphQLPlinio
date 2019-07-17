@@ -8,6 +8,6 @@ export default [
     alias: ['home', '']
   }
 ]
-// /dashboar/records
-// /dashboar/home
-// /dashboar
+// /dashboard/records
+// /dashboard/home
+// /dashboard

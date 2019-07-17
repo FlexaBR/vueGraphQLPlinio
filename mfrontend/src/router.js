@@ -14,7 +14,7 @@ const router = new Router({
   routes: [
     ...authRoutes,
     ...dashboardRoutes,
-    { path: '', redirect: '/login' }
+    { path: '', redirect: '/dashboard' }
   ]
 })
 

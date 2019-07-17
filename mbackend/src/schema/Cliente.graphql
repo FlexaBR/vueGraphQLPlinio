@@ -1,0 +1,27 @@
+type Cliente {
+  id: ID!
+  user: User!
+  cidade: Cidade!
+  pedidos: [Pedido!]
+  situacao: Int!
+  razaoSocial: String!
+  fantasia: String
+  nomeAbrev: String
+  telefones: String
+  contato: String
+  cpf: String
+  cnpj: String
+  inscEst: String
+  tipoLogr: String
+  logradouro: String
+  numero: String
+  complemento: String
+  bairro: String
+  cep: String
+  observacao: String
+
+  createdAt: Date!
+  createdPor: String
+  updatedAt: Date!
+  updatedPor: String
+}

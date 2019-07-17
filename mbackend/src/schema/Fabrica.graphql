@@ -1,0 +1,26 @@
+type Fabrica {
+  id: ID!
+  cidade: Cidade!
+  produtos: [Produto!]!
+  pedidos: [Pedido!]
+  situacao: Int!
+  razaoSocial: String!
+  fantasia: String
+  nomeAbrev: String
+  email: String
+  telefones: String
+  contato: String
+  cnpj: String
+  tipoLogr: String
+  logradouro: String
+  numero: String
+  complemento: String
+  bairro: String
+  cep: String
+  observacao: String
+
+  createdAt: Date!
+  createdPor: String
+  updatedAt: Date!
+  updatedPor: String
+}

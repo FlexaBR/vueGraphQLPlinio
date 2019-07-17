@@ -1,0 +1,18 @@
+type Produto {
+  id: ID!
+  fabrica: Fabrica!
+  itemPedis: [ItemPedi!]
+  ativo: Boolean!
+  referencia: String
+  nomeProd: String!
+  tabela1: Float!
+  tabela2: Float
+  comiProd: Float
+  unidade: String
+  caixaPadr: String
+
+  createdAt: Date!
+  createdPor: String
+  updatedAt: Date!
+  updatedPor: String
+}

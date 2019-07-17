@@ -1,0 +1,16 @@
+type ItemPedi {
+  id: ID!
+  pedido: Pedido!
+  produto: Produto!
+  detalhes: String
+  qtde: Int!
+  preco: Float!
+  subTota: Float
+  subComi: Float  
+  cancelado: Boolean!
+
+  createdAt: Date!
+  createdPor: String
+  updatedAt: Date!
+  updatedPor: String
+}

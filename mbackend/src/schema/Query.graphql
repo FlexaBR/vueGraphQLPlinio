@@ -19,6 +19,20 @@ type Query {
   
   
   users: [ User! ]!
+  cidade: Cidade
   cidades: [ Cidade! ]!
-  testes: [ Teste! ]!
+  cliente: Cliente
+  clientes: [ Cliente! ]!
+  fabrica: Fabrica
+  fabricas: [ Fabrica! ]!
+  fatura: Fatura
+  faturas: [ Fatura! ]!
+  itemPedi: ItemPedi
+  itemPedis: [ ItemPedi! ]!
+  pedido: Pedido
+  pedidos: [ Pedido! ]!
+  preposto: Preposto
+  prepostos: [ Preposto! ]!
+  produto: Produto
+  produtos: [ Produto! ]!
 }

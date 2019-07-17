@@ -10,15 +10,6 @@ function createCidade (_, args, ctx, info) {
   }, info)
 }
 
-function createTeste (_, args, ctx, info) {
-  return ctx.db.mutation.createTeste({
-    data: {
-      tst: args.tst
-    }
-  }, info)
-}
-
 module.exports = {
-  createCidade,
-  createTeste
+  createCidade  
 }
