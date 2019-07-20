@@ -1,35 +1,47 @@
-# import * from './Operation.gql'
 
-query RecordsByMonth (
-  $month: String,
-  $type: Operation,
-  $accountsIds: [ID!],
-  $categoriesIds: [ID!]
+query PedidosBy (
+  $id: ID,
+  $oc: String,
+  $clientesIds: [ID!]  
 ) {
-  records (
-    month: $month,
-    type: $type,
-    accountsIds: $accountsIds,
-    categoriesIds: $categoriesIds
+  pedidos (
+    id: $id,
+    oc: $oc,
+    clientesIds: $clientesIds
   ) {
     id
-    type
-    amount
-    description
-    note
-    tags
-    account {
+    cliente {
       id
-      description
+      razaoSocial
     }
-    category {
+    fabrica {
       id
-      description
-      operation
+      razaoSocial
     }
-    user {
+    preposto {
       id
-      name
+      nomeProp
     }
+    situacao
+    dataOrca
+    dataPedi
+    oc
+    pediFabrica
+    condicoes
+    parcelas
+    previEntrega
+    frete
+    total
+    desconto
+    valoComi
+    porcComi
+    observacao
+    obsImpressao
+    dataEmail
+    lido
+    createdAt
+    createdPor
+    updatedAt
+    updatedPor
   }
 }

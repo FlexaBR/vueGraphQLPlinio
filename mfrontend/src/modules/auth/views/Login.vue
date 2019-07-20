@@ -62,7 +62,6 @@
             <v-btn
               block
               depressed
-              color="secondary"
               @click="isLogin = !isLogin"
             >
               {{ texts.button }}

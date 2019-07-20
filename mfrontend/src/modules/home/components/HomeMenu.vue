@@ -27,7 +27,7 @@
         </v-list-tile-avatar>
 
         <v-list-tile-content>
-          <v-list-tile-title>{{ user.name }}</v-list-tile-title>
+          <v-list-tile-title>teste Home Menu</v-list-tile-title>
         </v-list-tile-content>
 
         <v-list-tile-action>
@@ -69,24 +69,18 @@
 </template>
 
 <script>
-import AuthService from '@/modules/auth/services/auth-service'
 
 export default {
-  name: 'AppMenu',
+  name: 'HomeMenu',
   props: {
     value: Boolean
   },
   data: () => ({
     items: [
-      { title: 'Dashboard', icon: 'dashboard', url: '/dashboard', exact: true },
-      { title: 'Finances', icon: 'attach_money', url: '/dashboard/records', exact: true },
-      { title: 'Pedidos', icon: 'shopping_cart', url: '/dashboard/pedidos', exact: true }
+      { title: 'Home', icon: 'home', url: '/home', exact: true }
     ],
     mini: false,
     user: {}
-  }),
-  async created () {
-    this.user = await AuthService.user()
-  }
+  })
 }
 </script>

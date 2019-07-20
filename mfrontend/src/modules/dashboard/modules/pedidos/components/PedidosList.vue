@@ -1,7 +1,7 @@
 <template>
   <v-list two-line>
     <PedidosListItem
-      v-for="pedidos in pedidos"
+      v-for="pedido in pedidos"
       :key="pedido.id"
       :pedido="pedido"
     />

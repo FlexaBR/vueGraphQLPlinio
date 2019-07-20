@@ -1,4 +1,5 @@
 import financesRoutes from './../modules/finances/router'
+import pedidosRoutes from './../modules/pedidos/router'
 
 const Dashboard = () => import('./../views/Dashboard.vue')
 
@@ -8,7 +9,8 @@ export default [
     component: Dashboard,
     meta: { requiresAuth: true },
     children: [
-      ...financesRoutes
+      ...financesRoutes,
+      ...pedidosRoutes
     ]
   }
 ]

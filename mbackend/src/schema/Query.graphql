@@ -30,7 +30,13 @@ type Query {
   itemPedi: ItemPedi
   itemPedis: [ ItemPedi! ]!
   pedido: Pedido
-  pedidos: [ Pedido! ]!
+
+  pedidos(
+    id: ID,
+    oc: String,
+    clientesIds: [ ID! ]
+  ): [ Pedido! ]!
+
   preposto: Preposto
   prepostos: [ Preposto! ]!
   produto: Produto

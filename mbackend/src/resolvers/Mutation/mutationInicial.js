@@ -60,8 +60,8 @@ function createRecord (_, args, ctx, info) {
       category: {
         connect: { id: args.categoryId }
       },
-      amount: args.amount,
-      type: args.type,
+      amount,
+      type,
       date: args.date,
       description: args.description,
       tags: args.tags,
