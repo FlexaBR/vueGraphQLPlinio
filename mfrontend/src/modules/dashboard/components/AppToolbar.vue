@@ -6,7 +6,7 @@
     dark
   >
     <v-toolbar-side-icon @click.stop="$emit('hide', !show)"></v-toolbar-side-icon>
-    <v-toolbar-title>+App</v-toolbar-title>
+    <v-toolbar-title>{{ title || 'Dashboard' }}</v-toolbar-title>
 
     <v-spacer></v-spacer>
 
@@ -49,6 +49,7 @@
 <script>
 
 import apollo, { onLogout } from '@/plugins/apollo'
+import { mapState } from 'vuex'
 
 export default {
   name: 'AppToolbar',
@@ -62,6 +63,9 @@ export default {
   data: () => ({
     showLogoutDialog: false
   }),
+  computed: {
+    ...mapState(['title'])
+  },
   methods: {
     async logout (e) {
       this.$router.push('/home')

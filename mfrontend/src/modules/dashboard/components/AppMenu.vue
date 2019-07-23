@@ -80,6 +80,8 @@ export default {
     items: [
       { title: 'Dashboard', icon: 'dashboard', url: '/dashboard', exact: true },
       { title: 'Finances', icon: 'attach_money', url: '/dashboard/records', exact: true },
+      { title: 'Receita', icon: 'add', url: '/dashboard/records/add?type=credit', exact: true },
+      { title: 'Despesa', icon: 'remove', url: '/dashboard/records/add?type=debit', exact: true },
       { title: 'Pedidos', icon: 'shopping_cart', url: '/dashboard/pedidos', exact: true }
     ],
     mini: false,
