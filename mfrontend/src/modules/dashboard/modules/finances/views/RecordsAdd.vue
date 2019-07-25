@@ -256,7 +256,8 @@ export default {
       showAccountCategoryDialog: false,
       showDateDialog: false,
       showTagsInput: false,
-      showNoteInput: false
+      showNoteInput: false,
+      subscriptions: []
     }
   },
   validations: {
@@ -287,15 +288,18 @@ export default {
   async created () {
     this.changeTitle(this.$route.query.type)
 
-    AccountsService.accounts()
-      .subscribe(accounts => (this.accounts = accounts))
+    this.subscriptions.push(
+      AccountsService.accounts()
+        .subscribe(accounts => (this.accounts = accounts))
+    )
 
-
-    this.operationSubject$
-      .pipe(
-        distinctUntilChanged(),
-        mergeMap(operation => CategoriesService.categories({ operation }))
-      ).subscribe(categories => (this.categories = categories))
+    this.subscriptions.push(
+      this.operationSubject$
+        .pipe(
+          distinctUntilChanged(),
+          mergeMap(operation => CategoriesService.categories({ operation }))
+        ).subscribe(categories => (this.categories = categories))
+    )
 
     this.operationSubject$.next(this.$route.query.type)
   },
@@ -307,6 +311,9 @@ export default {
     this.record.categoryId = ''
     this.operationSubject$.next(type)
     next()
+  },
+  destroyed () {
+    this.subscriptions.forEach(s => s.unsubscribe())
   },
   methods: {
     ...mapActions(['setTitle']),

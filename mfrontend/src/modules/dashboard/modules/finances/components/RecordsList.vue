@@ -8,8 +8,11 @@
       format="MM-YYYY"
       @month="changeMonth"
       :color="toolbarColor"
-      :month="$route.query.month"
-    ></ToolbarByMonth>
+      :month="month || $route.query.month"
+      :showSlot="true"
+    >
+      <RecordsFilter @filter="filter" />
+    </ToolbarByMonth>
 
     <v-card>
 
@@ -63,21 +66,23 @@
 </template>
 
 <script>
-
 import moment from 'moment'
 import { Subject } from 'rxjs'
 import { mergeMap } from 'rxjs/operators'
+import { createNamespacedHelpers } from 'vuex'
 import { groupBy } from '@/utils'
 import amountColorMixin from './../mixins/amount-color'
 import formatCurrencyMixin from '@/mixins/format-currency'
+import RecordsFilter from './RecordsFilter.vue'
 import RecordsListItem from './RecordsListItem.vue'
 import RecordsService from './../services/records-service'
 import ToolbarByMonth from './ToolbarByMonth.vue'
 import TotalBalance from './TotalBalance.vue'
-
+const { mapState, mapActions } = createNamespacedHelpers('finances')
 export default {
   name: 'RecordsList',
   components: {
+    RecordsFilter,
     RecordsListItem,
     ToolbarByMonth,
     TotalBalance
@@ -88,9 +93,11 @@ export default {
   ],
   data: () => ({
     records: [],
-    monthSubject$: new Subject()
+    filtersSubject$: new Subject(),
+    subscriptions: []
   }),
   computed: {
+    ...mapState(['filters', 'month']),
     mappedRecords () {
       return groupBy(this.records, 'date', (record, dateKey) => {
         return moment(record[dateKey].substr(0, 10)).format('DD/MM/YYYY')
@@ -109,21 +116,29 @@ export default {
   created () {
     this.setRecords()
   },
+  destroyed () {
+    this.subscriptions.forEach(s => s.unsubscribe())
+  },
   methods: {
+    ...mapActions(['setMonth']),
     changeMonth (month) {
       this.$router.push({
         path: this.$route.path,
         query: { month }
       })
-      this.monthSubject$.next({ month })
+      this.setMonth({ month })
+      this.filter()
     },
-    setRecords (month) {
-      console.log('Subscribing...')
-
-      this.monthSubject$
-        .pipe(
-          mergeMap(variables => RecordsService.records(variables))
-        ).subscribe(records => (this.records = records))
+    filter () {
+      this.filtersSubject$.next({ month: this.month, ...this.filters })
+    },
+    setRecords () {
+      this.subscriptions.push(
+        this.filtersSubject$
+          .pipe(
+            mergeMap(variables => RecordsService.records(variables))
+          ).subscribe(records => (this.records = records))
+      )
     },
     showDivider (index, object) {
       return index < Object.keys(object).length - 1
