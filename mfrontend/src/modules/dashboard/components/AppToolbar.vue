@@ -3,7 +3,6 @@
     app
     fixed
     color="primary"
-    dark
   >
     <v-toolbar-side-icon @click.stop="$emit('hide', !show)"></v-toolbar-side-icon>
     <v-toolbar-title>{{ title || 'Dashboard' }}</v-toolbar-title>
