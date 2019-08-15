@@ -6,3 +6,4 @@ mutation CategoryCreate($description: String!, $operation: Operation!) {
     ...CategoryFragment
   }
 }
+

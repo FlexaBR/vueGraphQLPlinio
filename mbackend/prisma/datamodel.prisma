@@ -7,18 +7,22 @@ enum Regra {
 }
 
 type User {
-  id: ID! @unique
+  id: ID! @id
   name: String!
   email: String! @unique
   password: String!
   
-  role: Regra! @default(value: "USUARIO")
-  ativo: Boolean @default(value: "true")
-  createdAt: DateTime!
+  role: Regra! @default(value: USUARIO)
+  ativo: Boolean @default(value: true)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+
+  cliente: Cliente @relation(link: INLINE)
+  preposto: Preposto @relation(link: INLINE)
 }
 
 type Account {
-  id: ID! @unique
+  id: ID! @id
   user: User
   description: String!
 }
@@ -29,14 +33,14 @@ enum Operation {
 }
 
 type Category {
-  id: ID! @unique
+  id: ID! @id
   user: User
   description: String!
   operation: Operation!
 }
 
 type Record {
-  id: ID! @unique
+  id: ID! @id
   user: User!
   account: Account!
   category: Category!
@@ -47,6 +51,6 @@ type Record {
   tags: String
   note: String
 
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }

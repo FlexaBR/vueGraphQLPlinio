@@ -1,15 +1,15 @@
 type Cidade {
-  id: ID! @unique
+  id: ID! @id
   nomeCidade: String!
   estado: String!
 }
 
 type Cliente {
-  id: ID! @unique
+  id: ID! @id
   user: User!
   cidade: Cidade!
-  pedidos: [Pedido!]
-  situacao: Int! @default(value:"1")
+  pedidos: [Pedido!]!
+  situacao: Int! @default(value:1)
   razaoSocial: String! @unique
   fantasia: String
   nomeAbrev: String
@@ -25,32 +25,31 @@ type Cliente {
   bairro: String
   cep: String
   observacao: String
-
-  createdAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdPor: String
-  updatedAt: DateTime!
   updatedPor: String
 }
 
 type FabrClie {
-  id: ID! @unique
+  id: ID! @id
   cliente: Cliente!
   fabrica: Fabrica!
   preposto: Preposto!
   comiClie: Float
   tabela: String
-  createdAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdPor: String
-  updatedAt: DateTime!
   updatedPor: String
 }
 
 type Fabrica {
-  id: ID! @unique
+  id: ID! @id
   cidade: Cidade!
   produtos: [Produto!]!
-  pedidos: [Pedido!]
-  situacao: Int! @default(value:"1")
+  pedidos: [Pedido!]!
+  situacao: Int! @default(value:1)
   razaoSocial: String! @unique
   fantasia: String
   nomeAbrev: String
@@ -66,16 +65,16 @@ type Fabrica {
   cep: String
   observacao: String
 
-  createdAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdPor: String
-  updatedAt: DateTime!
   updatedPor: String
 }
 
 type Fatura {
-  id: ID! @unique
+  id: ID! @id
   pedido: Pedido!
-  cancelado: Boolean! @default(value: "false")
+  cancelado: Boolean! @default(value: false)
   nf: String
   dataFatu: DateTime
   valFatu: Float
@@ -88,38 +87,20 @@ type Fatura {
   porcPrep: Float
   valPrep: Float
   dataPrep: DateTime
-
-  createdAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdPor: String
-  updatedAt: DateTime!
-  updatedPor: String
-}
-
-type ItemPedi {
-  id: ID! @unique
-  pedido: Pedido!
-  produto: Produto!
-  detalhes: String
-  qtde: Int!
-  preco: Float!
-  subTota: Float
-  subComi: Float  
-  cancelado: Boolean! @default(value: "false")
-
-  createdAt: DateTime!
-  createdPor: String
-  updatedAt: DateTime!
   updatedPor: String
 }
 
 type Pedido {
-  id: ID! @unique
+  id: ID! @id
   cliente: Cliente!
   fabrica: Fabrica!
   preposto: Preposto!
   faturas: [Fatura!]!
-  itemPedis: [ItemPedi!]!
-  situacao: Int! @default(value:"1")
+  itemPedis: [PediItem!]!
+  situacao: Int! @default(value:1)
   dataOrca: DateTime!
   dataPedi: DateTime
   oc: String
@@ -135,19 +116,36 @@ type Pedido {
   observacao: String
   obsImpressao: String
   dataEmail: DateTime
-  lido: Boolean! @default(value: "false")
-  createdAt: DateTime!
+  lido: Boolean! @default(value: false)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdPor: String
-  updatedAt: DateTime!
+  updatedPor: String
+}
+
+type PediItem {
+  id: ID! @id
+  pedido: Pedido!
+  produto: Produto!
+  detalhes: String
+  qtde: Int!
+  preco: Float!
+  subTota: Float
+  subComi: Float  
+  cancelado: Boolean! @default(value: false)
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  createdPor: String
   updatedPor: String
 }
 
 type Preposto {
-  id: ID! @unique
+  id: ID! @id
   user: User!
   cidade: Cidade!
   pedidos: [Pedido!]!
-  situacao: Int! @default(value:"1")
+  situacao: Int! @default(value:1)
   nomePrep: String! @unique
   telefones: String
   cpf: String
@@ -161,17 +159,16 @@ type Preposto {
   cep: String
   observacao: String
 
-  createdAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdPor: String
-  updatedAt: DateTime!
   updatedPor: String
 }
 
 type Produto {
-  id: ID! @unique
+  id: ID! @id
   fabrica: Fabrica!
-  itemPedis: [ItemPedi!]
-  ativo: Boolean! @default(value: "true")
+  ativo: Boolean! @default(value: true)
   referencia: String
   nomeProd: String!
   tabela1: Float!
@@ -180,8 +177,8 @@ type Produto {
   unidade: String
   caixaPadr: String
 
-  createdAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdPor: String
-  updatedAt: DateTime!
   updatedPor: String
 }
