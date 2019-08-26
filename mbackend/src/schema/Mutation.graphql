@@ -19,4 +19,23 @@ type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload  
 
   createCidade(nomeCidade: String!, estado: String!): Cidade!
+  createFabrica(
+    cidadeId: ID!
+    situacao: Int
+    razaoSocial: String!
+    fantasia: String
+    nomeAbrev: String
+    email: String
+    telefones: String
+    contato: String
+    cnpj: String
+    tipoLogr: String
+    logradouro: String
+    numero: String
+    complemento: String
+    bairro: String
+    cep: String
+    observacao: String
+    imageUrl: String
+  ): Fabrica!
 }

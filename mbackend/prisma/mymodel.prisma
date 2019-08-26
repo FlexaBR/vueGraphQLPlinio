@@ -1,11 +1,12 @@
 type Cidade {
   id: ID! @id
   nomeCidade: String!
-  estado: String!
+  estado: String! 
 }
 
 type Cliente {
   id: ID! @id
+  id2: Int
   user: User!
   cidade: Cidade!
   pedidos: [Pedido!]!
@@ -27,8 +28,7 @@ type Cliente {
   observacao: String
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  createdPor: String
-  updatedPor: String
+  
 }
 
 type FabrClie {
@@ -53,7 +53,7 @@ type Fabrica {
   razaoSocial: String! @unique
   fantasia: String
   nomeAbrev: String
-  email: String
+  email: String @unique  
   telefones: String
   contato: String
   cnpj: String
@@ -64,11 +64,10 @@ type Fabrica {
   bairro: String
   cep: String
   observacao: String
-
+  imageUrl: String
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  createdPor: String
-  updatedPor: String
+  criadoPor: User
 }
 
 type Fatura {
@@ -95,6 +94,7 @@ type Fatura {
 
 type Pedido {
   id: ID! @id
+  id2: Int
   cliente: Cliente!
   fabrica: Fabrica!
   preposto: Preposto!

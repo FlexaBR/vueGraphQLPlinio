@@ -1,52 +1,53 @@
 <template>
-  <!-- Side Navbar -->
-  <v-navigation-drawer
-    app
-    temporary
-    fixed
-    v-model="sideNav"
+  <v-card
+    flat
+    tile
   >
-    <v-toolbar
-      color="accent"
-      dark
-      flat
+    <!-- Side Navbar -->
+    <v-navigation-drawer
+      temporary
+      fixed
+      v-model="sideNav"
     >
-      <v-toolbar-side-icon @click="toggleSideNav"></v-toolbar-side-icon>
-      <router-link
-        to="/"
-        tag="span"
-        style="cursor: pointer"
+      <v-toolbar
+        color="accent"
+        dark
+        flat
       >
-        <h1 class="title pl-3">+Rep</h1>
-      </router-link>
-    </v-toolbar>
-    <v-divider></v-divider>
-    <!-- Side Navbar Links -->
-    <v-list>
-      <v-list-item
-        ripple
-        v-for="item in sideNavItems"
-        :key="item.title"
-        :to="item.link"
-        :exact="item.exact"
-      >
-        <v-list-item-icon>
-          <v-icon>{{item.icon}}</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>{{item.title}}</v-list-item-content>
-      </v-list-item>
-    </v-list>
+        <v-app-bar-nav-icon @click="toggleSideNav"></v-app-bar-nav-icon>
+        <router-link
+          to="/"
+          tag="span"
+          style="cursor: pointer"
+        >
+          <h1 class="title pl-3">+Rep</h1>
+        </router-link>
+      </v-toolbar>
+      <v-divider></v-divider>
+      <!-- Side Navbar Links -->
+      <v-list>
+        <v-list-item
+          ripple
+          v-for="item in sideNavItems"
+          :key="item.title"
+          :to="item.link"
+          :exact="item.exact"
+        >
+          <v-list-item-icon>
+            <v-icon>{{item.icon}}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>{{item.title}}</v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
 
-  </v-navigation-drawer>
-  <!-- Horizontal Navbar -->
-  <v-card>
+    <!-- Horizontal Navbar -->
     <v-toolbar
-      app
       fixed
       color="primary"
       dark
     >
-      <v-toolbar-side-icon @click="toggleSideNav"></v-toolbar-side-icon>
+      <v-app-bar-nav-icon @click="toggleSideNav"></v-app-bar-nav-icon>
       <v-toolbar-title class="hidden-xs-only">
         <router-link
           to="/"
@@ -59,7 +60,6 @@
       <v-toolbar-items class="hidden-xs-only">
         <v-btn
           text
-          flat
           v-for="item in horizontalNavItems"
           :key="item.title"
           :to="item.link"
@@ -104,14 +104,12 @@ export default {
   computed: {
     horizontalNavItems () {
       let items = [
-        { icon: 'create', title: 'Fábricas', link: '/' },
         { icon: 'chat', title: 'Contato', link: '/' }
       ]
       return items
     },
     sideNavItems () {
       let items = [
-        { icon: 'create', title: 'Fábricas', link: '/', exact: true },
         { icon: 'chat', title: 'Contato', link: '/', exact: true }
       ]
       if (this.user) {

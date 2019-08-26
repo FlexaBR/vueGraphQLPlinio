@@ -11,5 +11,5 @@ function createCidade (_, args, ctx, info) {
 }
 
 module.exports = {
-  createCidade  
+  createCidade
 }

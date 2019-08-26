@@ -3,7 +3,6 @@ function fabrica (_, args, ctx, info) {
 }
 
 function fabricas (_, args, ctx, info) {
-  //return prisma.cidades()
   return ctx.db.query.fabricas()
 }
 

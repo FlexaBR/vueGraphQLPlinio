@@ -1,8 +1,9 @@
+
 type Fabrica {
   id: ID!
   cidade: Cidade!
   produtos: [Produto!]!
-  pedidos: [Pedido!]
+  pedidos: [Pedido!]!
   situacao: Int!
   razaoSocial: String!
   fantasia: String
@@ -18,9 +19,6 @@ type Fabrica {
   bairro: String
   cep: String
   observacao: String
-
-  createdAt: Date!
-  createdPor: String
-  updatedAt: Date!
-  updatedPor: String
+  imageUrl: String
+  criadoPor: User
 }

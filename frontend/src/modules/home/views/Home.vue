@@ -1,6 +1,6 @@
 <template>
   <HomeLayout>
-    <h1>ipos slsksn akjsns alkskd alksjd aslkdasj</h1>
+
   </HomeLayout>
 </template>
 
