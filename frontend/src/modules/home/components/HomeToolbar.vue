@@ -1,16 +1,14 @@
 <template>
-  <v-card
-    flat
-    tile
-  >
+  <div>
     <!-- Side Navbar -->
     <v-navigation-drawer
+      app
       temporary
       fixed
       v-model="sideNav"
     >
       <v-toolbar
-        color="accent"
+        color="blue darken-4"
         dark
         flat
       >
@@ -28,7 +26,7 @@
       <v-list>
         <v-list-item
           ripple
-          v-for="item in sideNavItems"
+          v-for="item in NavItems"
           :key="item.title"
           :to="item.link"
           :exact="item.exact"
@@ -42,27 +40,28 @@
     </v-navigation-drawer>
 
     <!-- Horizontal Navbar -->
-    <v-toolbar
-      fixed
-      color="primary"
+    <v-app-bar
+      app
+      color="blue darken-3"
       dark
     >
       <v-app-bar-nav-icon @click="toggleSideNav"></v-app-bar-nav-icon>
-      <v-toolbar-title class="hidden-xs-only">
+      <v-toolbar-title>
         <router-link
           to="/"
           tag="span"
           style="cursor: pointer"
-        >MaisRep</router-link>
+        >Mais Representações</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <!-- Horizontal Navbar Links -->
       <v-toolbar-items class="hidden-xs-only">
         <v-btn
           text
-          v-for="item in horizontalNavItems"
+          v-for="item in NavItems"
           :key="item.title"
           :to="item.link"
+          :isLogin="item.isLogin"
         >
           <v-icon
             class="hidden-sm-only"
@@ -72,16 +71,8 @@
         </v-btn>
       </v-toolbar-items>
 
-      <v-toolbar-items>
-        <v-btn
-          icon
-          @click="entrar"
-        >
-          <v-icon>account_circle</v-icon>
-        </v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
-  </v-card>
+    </v-app-bar>
+  </div>
 </template>
 
 <script>
@@ -102,22 +93,11 @@ export default {
     event: 'hide'
   },
   computed: {
-    horizontalNavItems () {
+    NavItems () {
       let items = [
-        { icon: 'chat', title: 'Contato', link: '/' }
+        { icon: 'lock_open', title: 'Entrar', link: '/signin' },
+        { icon: 'create', title: 'Registrar', link: '/signup' }
       ]
-      return items
-    },
-    sideNavItems () {
-      let items = [
-        { icon: 'chat', title: 'Contato', link: '/', exact: true }
-      ]
-      if (this.user) {
-        items = [
-          { icon: 'create', title: 'Fábricas', link: '/', exact: true },
-          { icon: 'chat', title: 'Pedidos', link: '/pedidos', exact: true }
-        ]
-      }
       return items
     }
   },

@@ -7,6 +7,8 @@ import vuetify from './plugins/vuetify'
 import '@/plugins/moment'
 import '@/plugins/vuelidate'
 
+import '@/plugins/base'
+
 Vue.config.productionTip = false
 Vue.config.errorHandler = errorHandler
 

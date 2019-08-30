@@ -6,15 +6,18 @@ import AuthService from '@/modules/auth/services/auth-service'
 
 import authRoutes from '@/modules/auth/router'
 import homeRoutes from '@/modules/home/router'
+import dashboardRoutes from '@/modules/dashboard/router'
 
 Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+  linkActiveClass: 'active',
   routes: [
     ...authRoutes,
     ...homeRoutes,
+    ...dashboardRoutes,
     { path: '', redirect: '/home' }
   ]
 })
