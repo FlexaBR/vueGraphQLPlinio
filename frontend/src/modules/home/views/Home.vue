@@ -10,6 +10,7 @@
           </v-flex>
         </v-container>
       </section>
+      <Representadas />
       <About />
       <Contact />
     </v-content>
@@ -25,6 +26,7 @@ import Banner from './../components/Banner'
 import Contact from './../components/Contact'
 import Footer from './../components/Footer'
 import HomeToolbar from './../components/HomeToolbar'
+import Representadas from './../components/Representadas'
 
 export default {
   name: 'Home',
@@ -33,7 +35,8 @@ export default {
     Banner,
     Contact,
     Footer,
-    HomeToolbar
+    HomeToolbar,
+    Representadas
   },
   data () {
     return {

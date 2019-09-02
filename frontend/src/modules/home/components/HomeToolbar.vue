@@ -51,7 +51,7 @@
           to="/"
           tag="span"
           style="cursor: pointer"
-        >Mais Representações</router-link>
+        >+Representações</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <!-- Horizontal Navbar Links -->

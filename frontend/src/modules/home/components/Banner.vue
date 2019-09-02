@@ -4,11 +4,11 @@
     tile
     flat
   >
-    <v-img
+    <v-parallax
       class="grey lighten-2"
       height="400"
       width="100%"
-      :src="require('./../../../assets/home/budd9.jpg')"
+      :src="require('./../../../assets/home/budd/Imagem1.jpg')"
     >
       <v-layout
         fill-height
@@ -22,13 +22,13 @@
           offset-md1
         >
           <h1 class="display-3 font-weight-light">
-            A Arte de Comprar Bem
+            Mais Rep
           </h1>
           <div class="subheading pl-2 mb-4">
-            Os melhores produtos e condições para o sucesso da sua loja
+            A Arte de Comprar Bem
           </div>
         </v-flex>
       </v-layout>
-    </v-img>
+    </v-parallax>
   </v-card>
 </template>
