@@ -1,93 +1,82 @@
 <template>
+  <v-content class="py-5">
+    <Jumbotron />
+    <GetApp />
+    <Fabricas />
+    <v-container
+      id="testimonials"
+      class="py-5"
+      tag="section"
+    >
+      <heading>Testemunhal</heading>
 
-  <v-container>
-    <HomeToolbar />
-    <v-content>
-      <section>
-        <v-container grid-list-xl>
-          <v-flex xs-12>
-            <Banner />
-          </v-flex>
-        </v-container>
-      </section>
-      <Representadas />
-      <About />
-      <Contact />
-    </v-content>
-
-    <Footer />
-  </v-container>
+      <v-row>
+        <v-col
+          v-for="(testimonial, i) in testimonials"
+          :key="i"
+          cols="12"
+          md="6"
+        >
+          <testimonial :testimonial="testimonial" />
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-content>
 </template>
 
 <script>
 
-import About from './../components/About'
-import Banner from './../components/Banner'
-import Contact from './../components/Contact'
-import Footer from './../components/Footer'
-import HomeToolbar from './../components/HomeToolbar'
-import Representadas from './../components/Representadas'
+import Fabricas from './../components/Fabricas'
+import GetApp from './../components/GetApp'
+import Heading from './../components/Heading'
+import Jumbotron from './../components/Jumbotron'
+import Testimonial from './../components/Testimonial'
 
 export default {
   name: 'Home',
   components: {
-    About,
-    Banner,
-    Contact,
-    Footer,
-    HomeToolbar,
-    Representadas
+    Fabricas,
+    GetApp,
+    Heading,
+    Jumbotron,
+    Testimonial
   },
-  data () {
-    return {
-      fabricas: [
-        {          fantasia: 'Buddemeyer',
-          apresentacao: 'Atendemos na capital, litoral, regiões metropolitana e sul do Rio Grande do Sul.',
-          imageUrl: 'http://hydra.buddemeyer.com.br/portal/images/inicial/index_4.jpg?c=20190827124344'        },
-        {          fantasia: 'DelRio',
-          apresentacao: 'Atendemos Rio Grande do Sul.',
-          imageUrl: 'https://www.delrio.com.br/sites/default/files/styles/1007x450/public/imagem-blog/delrio_9715_posts_blog_noivas_v1_-_post_2_0.png?itok=TARung5O'        },
-        {          fantasia: 'Boutique de Aromas',
-          apresentacao: 'Atendemos Rio Grande do Sul.',
-          imageUrl: 'https://boutiquedearomas.com.br/wp-content/uploads/2019/08/Banner-1.jpg'        }
-      ]
-    }
-  }
-}
 
+  data: () => ({
+    highlightedTestimonial: {
+      blurb: 'The complexities and challenges AlphaConstruction successfully overcame on our behalf includes substantial permit obstacles, coordination and selection support of all design and finish materials, and the diffculty of integrating existing and new structures.',
+      person: 'Joe Malonagi',
+      title: 'General Manager, Springfield Tower'
+    },
+    features: [
+      {
+        title: 'Award-winning architecture',
+        text: 'Every achievement begins with a vision. It is built on a foundation of creative concepts and dreams to become something bigger and better. At AlphaConstruction we build with those who follow a vision, not a path.',
+        src: '/static/feature1.png'
+      },
+      {
+        title: 'Relentless pursuit of your vision',
+        text: 'Our commitment to excellence and continous improvement, to building lasting relationships with our clients, and to the team members who create your vision, are the guiding principles that assure successful outcomes on every project we build.',
+        src: '/static/feature2.png'
+      },
+      {
+        title: 'Your vision - Our mission',
+        text: 'To build an everlasting environment of trust with our clients and team members that will foster customer loyalty by delivering superior service and quality projects.',
+        src: '/static/feature3.png'
+      }
+    ],
+    testimonials: [
+      {
+        blurb: 'Para atingirmos os melhores resultados, comprar certo é fundamental. Precisamos acertar na escolha dos produtos, cores, quantidades e preços. Sucesso em nosso departamento significa giro de vendas, produtos que não param nas prateleiras, e para isso, a assessoria da Mais Representações foi e é fundamental. Compramos sempre na medida certa para nossos melhores resultados.',
+        person: 'Nancy Swanson',
+        title: 'Diretora de Compras, Cia Zaffari S.A.'
+      },
+      {
+        blurb: 'Desde que conhecemos a Mais Rep nosso departamento de lyngerie teve um crescimento de 200%! A definição do mix de produtos e preços com a parceria da Mais foi essencial para nosso crescimento de vendas.',
+        person: 'Anré Schraiber',
+        title: 'Gerente de Compras, Lojas Pompéia'
+      }
+    ]
+  })
+}
 </script>
-
-<style>
-h3 {
-  font-weight: 400;
-  font-size: 1rem;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition-property: opacity;
-  transition-duration: 0.25s;
-}
-
-.fade-enter-active {
-  transition-delay: 0.25s;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-}
-
-#carousel__title {
-  position: absolute;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border-radius: 5px 5px 0 0;
-  padding: 0.5em;
-  margin: 0 auto;
-  bottom: 50px;
-  left: 0;
-  right: 0;
-}
-</style>

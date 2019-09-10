@@ -1,10 +1,12 @@
+import { set, toggle } from '@/utils/vuex'
 import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
 const state = {
-  title: undefined
+  title: undefined,
+  drawer: null
 }
 
 const types = {
@@ -14,7 +16,9 @@ const types = {
 const mutations = {
   [types.SET_TITLE]: (state, { title }) => {
     state.title = title
-  }
+  },
+  setDrawer: set('drawer'),
+  toggleDrawer: toggle('drawer')
 }
 
 const actions = {
@@ -24,7 +28,7 @@ const actions = {
 }
 
 export default new Vuex.Store({
-  state,
+  actions,
   mutations,
-  actions
+  state
 })

@@ -18,7 +18,19 @@ export default new Vuetify({
   theme: {
     themes: {
       light: {
-        vinho: '#3B125F'
+        vinho: '#3B125F',
+        vrde: '#6BAFBA',
+        fundo: '#fcf8ff',
+        cinza: '#d9d9d9',
+        azul: '#228eff',
+        azulbb: '#a6deff',
+        azulesc: '#2f3b7e',
+        secondary: '#8B5FBF',
+        accent: '#BF653F',
+        error: '#722530',
+        warning: '#A37513',
+        info: '#396893',
+        success: '#4caf50'
       }
     }
   }

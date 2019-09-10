@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    <HomeToolbar />
 
     <v-content>
       <v-container
@@ -108,7 +107,6 @@
         </v-layout>
       </v-container>
     </v-content>
-    <Footer />
   </v-container>
 </template>
 
@@ -116,14 +114,10 @@
 import { required, email, minLength } from 'vuelidate/lib/validators'
 import AuthService from './../services/auth-service'
 import { formatError } from '@/utils'
-import HomeToolbar from './../../home/components/HomeToolbar'
-import Footer from './../../home/components/Footer'
 
 export default {
   name: 'Sign',
   components: {
-    HomeToolbar,
-    Footer
   },
   data: () => ({
     error: undefined,
