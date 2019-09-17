@@ -6,6 +6,7 @@
 #import Fatura from 'Fatura.graphql'
 #import ItemPedi from 'ItemPedi.graphql'
 #import Pedido from 'Pedido.graphql'
+#import Perfil from 'Perfil.graphql'
 #import Preposto from 'Preposto.graphql'
 #import Produto from 'Produto.graphql'
 

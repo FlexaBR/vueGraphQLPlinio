@@ -1,3 +1,11 @@
+enum Regra {
+  USUARIO
+  CLIENTE
+  PREPOSTO
+  DIRETOR
+  ADMIN
+}
+
 type Cidade {
   id: ID! @id
   nomeCidade: String!
@@ -139,6 +147,13 @@ type PediItem {
   createdPor: String
   updatedPor: String
 }
+
+type Perfil {
+  id: ID! @id
+  nome: Regra!
+  users: [User!]!
+ }
+
 
 type Preposto {
   id: ID! @id

@@ -21,7 +21,7 @@
               :class="$vuetify.breakpoint.smAndUp ? 'display-3' : 'display-2'"
               class="mb-2"
             >Bom é Comprar Bem</h1>
-            <div class="title font-weight-light">Mais Representações a melhor assessoria para as compras de sua loja no Rio grande do Sul.</div>
+            <div class="title font-weight-light">Mais Representações a melhor assessoria para as compras de sua loja no Rio Grande do Sul.</div>
           </v-col>
         </v-slide-x-transition>
       </v-container>

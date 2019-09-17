@@ -1,21 +1,18 @@
 <template>
   <v-app>
     <Toolbar />
-    <Drawer />
     <router-view />
     <Footer />
   </v-app>
 </template>
 
 <script>
-import Drawer from './components/core/Drawer'
 import Footer from './components/core/Footer'
 import Toolbar from './components/core/Toolbar'
 
 export default {
   name: 'App',
   components: {
-    Drawer,
     Footer,
     Toolbar
   },

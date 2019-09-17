@@ -1,25 +1,17 @@
-enum Regra {
-  USUARIO
-  CLIENTE
-  PREPOSTO
-  DIRETOR
-  ADMIN
-}
-
 type User {
   id: ID! @id
   name: String!
   email: String! @unique
   password: String!
-  
-  role: Regra! @default(value: USUARIO)
   ativo: Boolean @default(value: true)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 
+  perfis: [Perfil!]!
   cliente: Cliente @relation(link: INLINE)
   preposto: Preposto @relation(link: INLINE)
 }
+
 
 type Account {
   id: ID! @id

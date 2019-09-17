@@ -4,7 +4,6 @@
       justify-center
       align-center
     >
-
       <v-flex
         xs12
         sm6
@@ -13,7 +12,6 @@
         xl3
       >
         <v-card class="elevation-12">
-
           <v-toolbar
             color="vinho"
             dark
@@ -58,6 +56,18 @@
                 :success="!$v.user.password.$invalid"
                 v-model.trim="$v.user.password.$model"
               ></v-text-field>
+
+              <v-text-field
+                v-if="!isLogin"
+                name="confirmPassword"
+                prepend-icon="gavel"
+                label="Confirme a senha"
+                type="password"
+                :error-messages="confirmPasswordErrors"
+                :success="!$v.user.confirmPassword.$invalid"
+                v-model.trim="$v.user.confirmPassword.$model"
+              ></v-text-field>
+
             </v-form>
             <v-btn
               block
@@ -72,9 +82,10 @@
             <v-spacer></v-spacer>
             <v-btn
               :disabled="$v.$invalid"
-              color="primary"
+              color="vinho"
               large
               @click="submit"
+              dark
             >{{ texts.toolbar }}</v-btn>
           </v-card-actions>
 
@@ -85,23 +96,21 @@
             {{ error }}
             <v-btn
               color="pink"
-              flat
+              text
               icon
               @click="showSnackbar = false"
             >
               <v-icon>close</v-icon>
             </v-btn>
           </v-snackbar>
-
         </v-card>
       </v-flex>
-
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import { required, email, minLength } from 'vuelidate/lib/validators'
+import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 import AuthService from './../services/auth-service'
 import { formatError } from '@/utils'
 
@@ -115,7 +124,8 @@ export default {
     user: {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      confirmPassword: ''
     }
   }),
   validations () {
@@ -127,7 +137,7 @@ export default {
         },
         password: {
           required,
-          minLength: minLength(6)
+          minLength: minLength(4)
         }
       }
     }
@@ -138,6 +148,11 @@ export default {
         name: {
           required,
           minLength: minLength(3)
+        },
+        confirmPassword: {
+          required,
+          minLength: minLength(4),
+          sameAs: sameAs('password')
         }
       }
     }
@@ -170,6 +185,15 @@ export default {
       if (!password.$dirty) { return errors }
       !password.required && errors.push('Senha é obrigatória!')
       !password.minLength && errors.push(`Insira pelo menos ${password.$params.minLength.min} caracteres!`)
+      return errors
+    },
+    confirmPasswordErrors () {
+      const errors = []
+      const confirmPassword = this.$v.user.confirmPassword
+      if (!confirmPassword.$dirty) { return errors }
+      !confirmPassword.required && errors.push('Repita a senha!')
+      !confirmPassword.minLength && errors.push(`Insira pelo menos ${confirmPassword.$params.minLength.min} caracteres!`)
+      !confirmPassword.sameAs && errors.push('Senha deve ser identica!')
       return errors
     }
   },

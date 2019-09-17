@@ -10,7 +10,7 @@ type User {
   name: String!
   email: String!
 
-  role: String!
+  perfis: [Perfil]
   ativo: Boolean!
   createdAt: Date!
 }

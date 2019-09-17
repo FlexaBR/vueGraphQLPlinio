@@ -21,7 +21,10 @@
           </h2>
         </v-col>
         <v-col class="shrink">
-          <v-btn outlined>
+          <v-btn
+            outlined
+            to="/login"
+          >
             APP +Rep
           </v-btn>
         </v-col>
